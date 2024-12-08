@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class StudentResource extends JsonResource
 {
+    public static $wrap = false;
     /**
      * Transform the resource into an array.
      *
@@ -20,6 +21,7 @@ class StudentResource extends JsonResource
             'email' => $this->email,
             'class' => ClassesResource::make($this->whenLoaded('class')),
             'section' => SectionResource::make($this->whenLoaded('section')),
+            'created_at' => $this->created_at->toFormattedDateString(),
         ];
     }
 }
