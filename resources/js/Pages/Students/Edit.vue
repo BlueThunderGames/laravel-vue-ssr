@@ -4,22 +4,27 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import { Head } from "@inertiajs/vue3";
 import { usePage, useForm } from "@inertiajs/vue3";
-import { watch, ref } from "vue";
+import { watch, ref, onMounted } from "vue";
 
 defineProps({
     classes: {
         type: Object,
         required: true,
     },
+    student: {
+        type: Object,
+        required: true,
+    }
 });
 
 let sections = ref({});
+let student = usePage().props.student;
 
 const form = useForm({
-    name: "",
-    email: "",
-    class_id: "",
-    section_id: "",
+    name: student.name,
+    email: student.email,
+    class_id: student.class.id,
+    section_id: student.section.id,
 });
 
 watch(
@@ -35,16 +40,21 @@ const getSections = (classId) => {
     });
 };
 
-const createStudent = () => {
-    form.post(route("students.store"));
+const updateStudent = () => {
+    form.put(route("students.update"), {student: student.id});
+    //form.put(route("students.update"), {student: props.student.id});
 };
+
+onMounted(() => {
+    getSections(form.class_id);
+});
 </script>
 <template>
-    <Head title="Create Student" />
+    <Head title="Update Student" />
     <AuthenticatedLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                Create Student
+                Update Student
             </h2>
         </template>
 
@@ -52,8 +62,8 @@ const createStudent = () => {
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="px-8 py-8 bg-white">
                     <h3 class="font-bold">Student Information</h3>
-                    <p>Use this form to create a new student.</p>
-                    <form @submit.prevent="createStudent" class="w-full mt-8">
+                    <p>Use this form to edit this student.</p>
+                    <form @submit.prevent="updateStudent" class="w-full mt-8">
                         <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label
@@ -161,7 +171,7 @@ const createStudent = () => {
                                 class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
                                 type="submit"
                             >
-                                Create
+                                Update
                             </button>
                         </div>
                     </form>

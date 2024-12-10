@@ -18,7 +18,7 @@ const page = usePage();
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Students" />
 
     <AuthenticatedLayout>
         <template #header>
@@ -68,7 +68,7 @@ const page = usePage();
                                     {{ student.created_at }}
                                 </td>
                                 <td class="p-3 border-b border-blue-gray-50 text-center">
-                                    <a href="#" class="mr-2">Edit</a>
+                                    <Link :href="route('students.edit', student.id)" class="mr-2">Edit</Link>
                                     <a href="#">Delete</a>
                                 </td>
                             </tr>
