@@ -41,8 +41,7 @@ const getSections = (classId) => {
 };
 
 const updateStudent = () => {
-    form.put(route("students.update"), {student: student.id});
-    //form.put(route("students.update"), {student: props.student.id});
+    form.put(route("students.update", student.id));
 };
 
 onMounted(() => {

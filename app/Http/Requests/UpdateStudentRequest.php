@@ -27,7 +27,6 @@ class UpdateStudentRequest extends FormRequest
             'email' => [
                 'required', 
                 'email', 
-                'unique:students,email', 
                 'max:255',
                 'unique:students,email,' .$this->student->id
             ],
