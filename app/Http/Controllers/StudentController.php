@@ -16,16 +16,22 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = StudentResource::collection(Student::paginate(10));
+        $studentsQuery = Student::search($request);
+
+        $students = StudentResource::collection($studentsQuery->paginate(10));
+
+        $classes = ClassesResource::collection(Classes::all());
 
         return inertia('Students/Index', [
-            'students' => $students
+            'students' => $students,
+            'search' => $request->search ?? '',
+            'classes' => $classes
         ]);
         
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -83,8 +89,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+
+        return redirect()->route('students.index');
     }
 }
