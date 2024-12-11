@@ -27,6 +27,7 @@ class StudentController extends Controller
         return inertia('Students/Index', [
             'students' => $students,
             'search' => $request->search ?? '',
+            'class_id' => $request->class_id ?? '',
             'classes' => $classes
         ]);
         

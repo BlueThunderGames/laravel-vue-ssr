@@ -16,6 +16,10 @@ defineProps({
         type: String,
         required: false,
     },
+    class_id: {
+        type: String,
+        required: false,
+    },
     classes: {
         type: Object,
         required: true,
@@ -24,7 +28,7 @@ defineProps({
 
 let search = ref(usePage().props.search),
     pageNumber = ref(1),
-    class_id = ref("");
+    class_id = ref(usePage().props.class_id);
 
 let studentsUrl = computed(() => {
     let url = new URL(route("students.index"));
