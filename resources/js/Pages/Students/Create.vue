@@ -49,7 +49,7 @@ const createStudent = () => {
         </template>
 
         <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="px-8 py-8 bg-white">
                     <h3 class="font-bold">Student Information</h3>
                     <p>Use this form to create a new student.</p>
@@ -64,7 +64,7 @@ const createStudent = () => {
                                 </label>
                                 <input
                                     v-model="form.name"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                     :class="{ 'border-red-500 ': form.errors.name }"
                                     id="grid-name"
                                     type="text"
@@ -84,7 +84,7 @@ const createStudent = () => {
                                 </label>
                                 <input
                                     v-model="form.email"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                     :class="{ 'border-red-500 ': form.errors.email }"
                                     id="grid-email"
                                     type="email"
@@ -107,7 +107,7 @@ const createStudent = () => {
                                     v-model="form.class_id"
                                     name="class-id"
                                     id="grid-class"
-                                    class="w-full block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    class="w-full block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                     :class="{ 'border-red-500 ': form.errors.class_id }"
                                 >
                                     <option value="" disabled selected>
@@ -136,7 +136,7 @@ const createStudent = () => {
                                     v-model="form.section_id"
                                     name="section"
                                     id="grid-section"
-                                    class="w-full appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    class="w-full appearance-none block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                     :class="{ 'border-red-500 ': form.errors.section_id }"
                                 >
                                     <option value="" disabled selected>

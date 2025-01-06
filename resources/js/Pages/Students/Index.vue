@@ -102,7 +102,7 @@ watch(
         </template>
 
         <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="upper-wrapper flex justify-between">
                     <div class="search-wrapper py-3 w-6/12">
                         <h4 class="font-bold mb-2">Students</h4>
@@ -117,16 +117,16 @@ watch(
                                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
                                     >Search Students by Name or Email</label
                                 >
-                                <div class="relative w-full flex gap-4">
+                                <div class="relative w-full lg:flex lg:gap-4">
                                     <input
                                         type="search"
                                         id="search-dropdown"
-                                        class="block p-2.5 w-7/12 z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                                        class="block p-2.5 lg:w-7/12 max-lg:w-[260px] max-lg:mb-4 z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                                         placeholder="Search Students by Name or Email"
                                         required
                                         v-model="search"
                                     />
-                                    <select v-model="class_id" name="class" id="class" class="block p-2.5 w-5/12 z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500">
+                                    <select v-model="class_id" name="class" id="class" class="block p-2.5 lg:w-5/12 max-lg:w-[260px] z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500">
                                     <option value="">Filter by Class</option>
                                     <option
                                         v-for="classItem in classes.data"
@@ -158,7 +158,7 @@ watch(
                         <thead class="text-gray-500">
                             <tr>
                                 <th
-                                    class="p-3 border-b border-blue-gray-100 bg-blue-gray-50 text-center"
+                                    class="p-3 border-b border-blue-gray-100 bg-blue-gray-50 text-center max-lg:hidden"
                                 >
                                     ID
                                 </th>
@@ -168,7 +168,7 @@ watch(
                                     Name
                                 </th>
                                 <th
-                                    class="p-3 border-b border-blue-gray-100 bg-blue-gray-50 text-center"
+                                    class="p-3 border-b border-blue-gray-100 bg-blue-gray-50 text-center max-lg:hidden"
                                 >
                                     Email
                                 </th>
@@ -183,7 +183,7 @@ watch(
                                     Section
                                 </th>
                                 <th
-                                    class="p-3 border-b border-blue-gray-100 bg-blue-gray-50 text-center"
+                                    class="p-3 border-b border-blue-gray-100 bg-blue-gray-50 text-center max-lg:hidden"
                                 >
                                     Date Added
                                 </th>
@@ -201,7 +201,7 @@ watch(
                                 class="bg-white"
                             >
                                 <td
-                                    class="p-3 border-b border-blue-gray-50 text-center"
+                                    class="p-3 border-b border-blue-gray-50 text-center max-lg:hidden"
                                 >
                                     {{ student.id }}
                                 </td>
@@ -211,7 +211,7 @@ watch(
                                     {{ student.name }}
                                 </td>
                                 <td
-                                    class="p-3 border-b border-blue-gray-50 text-center"
+                                    class="p-3 border-b border-blue-gray-50 text-center max-lg:hidden"
                                 >
                                     {{ student.email }}
                                 </td>
@@ -226,7 +226,7 @@ watch(
                                     {{ student.section.name }}
                                 </td>
                                 <td
-                                    class="p-3 border-b border-blue-gray-50 text-center"
+                                    class="p-3 border-b border-blue-gray-50 text-center max-lg:hidden"
                                 >
                                     {{ student.created_at }}
                                 </td>
@@ -237,12 +237,13 @@ watch(
                                         :href="
                                             route('students.edit', student.id)
                                         "
-                                        class="mr-2"
+                                        class="mr-2 hover:text-blue-700"
                                         >Edit</Link
                                     >
                                     <button
                                         @click="deleteStudent(student.id)"
                                         href="#"
+                                        class="hover:text-red-700"
                                     >
                                         Delete
                                     </button>
